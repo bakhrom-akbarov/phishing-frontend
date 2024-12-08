@@ -1,9 +1,44 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
-    "rootDir": "./src",
-    "jsx": "react"
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "types": [
+      "node",
+      "webpack-env"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowWorkerImportScripts": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "src/*": [
+        "./src/*"
+      ]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
