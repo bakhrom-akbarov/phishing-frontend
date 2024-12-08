@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Phishing } from './pages/Phishing';
+import { Attempts } from './pages/Attempts';
+import { NotFound } from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
+import { Awareness } from "./pages/Awareness";
 
-function App() {
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/phishing"
+          element={
+            <ProtectedRoute>
+              <Phishing />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/attempts"
+          element={
+            <ProtectedRoute>
+              <Attempts />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/awareness/:id" element={<Awareness />} />
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/not-found" />} />
+      </Routes>
+    </Router>
   );
-}
-
-export default App;
+};
