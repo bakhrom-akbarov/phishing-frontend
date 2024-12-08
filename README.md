@@ -1,8 +1,13 @@
 ## Phishing app frontend
 
-Run backend server and MongoDB in docker-compose
+Build the docker container
 ```
-yarn start:docker
+docker build -t react-app .
+```
+
+Run the react app container in docker
+```
+docker run -p 3000:3000 react-app
 ```
 
 Some of the known issues to fix:
